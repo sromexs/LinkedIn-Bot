@@ -45,6 +45,13 @@ import {
 
       await drive.get(link + "detail/recent-activity/");
 
+      await drive
+        .manage()
+        .window()
+        .setRect({ x: 0, y: 0, width: 20, height: 20 });
+      await sleep(500);
+      await drive.manage().window().maximize();
+
       const firstLikeBtn = await waitToFindElementByXpath(
         drive,
         "//button[@aria-pressed='false' and contains(@aria-label,'Like')]"
